@@ -1,12 +1,21 @@
 import { TouchableOpacity, TextInput, View, StyleSheet, Text } from "react-native";
 import React, { useState } from "react";
 
-export default function Login({ navigation }) {
+export default function Login({ navigation, data }) {
     const [email, setEmail] = useState("");
     const [senha, setSenha] = useState("");
 
     const login = () => {
-        props.navigation.navigate("MainScreen", { email: email, senha: senha })
+        console.log(data)
+
+        var log = false
+        data.filter((item) => {
+            console.log(item)
+            if (item.email == email && item.senha == senha) {
+                navigation.navigate("mainScreen")
+            }
+        })
+
     }
 
     return (
@@ -36,7 +45,7 @@ export default function Login({ navigation }) {
 
             <View style={{width:300}}>
                 <TouchableOpacity
-                    onPress={() => navigation.navigate("mainScreen")}
+                    onPress={() => login()  }
                     style={ styles.buttonInput }
                 >
                     <p>

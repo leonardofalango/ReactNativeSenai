@@ -19,7 +19,9 @@ export default function App() {
   return (
     <NavigationContainer>
       <Stack.Navigator>
-        <Stack.Screen name="login" options={{ headerShown: false }} component={ Login } />
+        <Stack.Screen name="login" options={{ headerShown: false }}>
+          { props => <Login {...props} data={ user } /> }
+        </Stack.Screen>
 
         <Stack.Screen name="cadastro">
           { props => <Cadastro {...props} addUser={ addUser } /> }
